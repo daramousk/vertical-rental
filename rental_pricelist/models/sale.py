@@ -252,7 +252,7 @@ class SaleOrderLine(models.Model):
 
     @api.onchange("product_id")
     def product_id_change(self):
-        res = super(SaleOrderLine, self).product_id_change()
+        res = super(SaleOrderLine, self).product_id_change() or {}
         if self.rental:
             if self.display_product_id.rental:
                 if "domain" not in res:

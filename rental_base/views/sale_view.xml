@@ -57,7 +57,7 @@
             ref="sale_stock.view_order_form_inherit_sale_stock"
         />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='product_packaging']" position="attributes">
+                <xpath expr="//field[@name='product_packaging_id']" position="attributes">
                     <attribute name="attrs">{'invisible': 1}</attribute>
                 </xpath>
             </field>
@@ -133,12 +133,6 @@
 
             <!-- Sale Order Lines -->
             <!-- Hide fields inserted by sale module to move them to new location -->
-            <xpath
-                expr="//group[field[@name='analytic_tag_ids']]"
-                position="attributes"
-            >
-                <attribute name="id">further_rental_info</attribute>
-            </xpath>
             <xpath expr="//field[@name='tax_id']" position="attributes">
                 <attribute name="attrs">{'invisible': 1}</attribute>
             </xpath>
@@ -246,7 +240,7 @@
                 <field name="name" nolabel="1" colspan="2" />
             </xpath>
 
-            <xpath expr="//group[@id='further_rental_info']" position="inside">
+            <xpath expr="//field[@name='order_line']/form//field[@name='analytic_tag_ids']" position="after">
                 <!-- Group: Rental Settings -->
                 <group id="rental_settings" string="Rental Settings" colspan="4">
                     <field name="rental" />
@@ -348,7 +342,7 @@
                 <!-- Group: Transport -->
                 <group id="rental_transport" string="Transport" colspan="4">
                     <field
-                        name="product_packaging"
+                        name="product_packaging_id"
                         attrs="{'invisible': [('product_id', '=', False)]}"
                         context="{'default_product_id': product_id,
                                      'tree_view_ref':'product.product_packaging_tree_view',
