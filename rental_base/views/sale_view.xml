@@ -114,6 +114,7 @@
                     required="1"
                     widget="radio"
                     options="{'horizontal': true}"
+                    invisible="1"
                 />
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
