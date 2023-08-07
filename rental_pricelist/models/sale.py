@@ -27,20 +27,12 @@ class SaleOrderLine(models.Model):
 
     @api.model
     def _get_product_domain(self):
-        domain = [
-            "|",
-            "&",
-            ("type", "=", "product"),
-            "|",
-            ("sale_ok", "=", True),
-            ("rental", "=", True),
-            "&",
-            ("type", "=", "service"),
-            "&",
-            ("sale_ok", "=", True),
-            ("rental", "=", False),
-        ]
-        return domain
+        default_type_id = self.env.context.get("default_type_id")
+        if not default_type_id or self.env["sale.order.type"].browse(
+            default_type_id
+        ) == self.env.ref("sale_order_type.normal_sale_type"):
+            return [("rented_product_id", "=", None)]
+        return [("rented_product_id", "!=", None)]
 
     def _set_product_id(self):
         self.ensure_one()

@@ -36,10 +36,26 @@
             <field name="default_start_date" position="replace" />
             <field name="default_end_date" position="replace" />
             <field name="validity_date" position="after">
-                <span class="o_form_label font-weight-bold">Service Period</span>
+                <span
+                    class="o_form_label font-weight-bold"
+                    attrs="{'invisible': [('sale_order_type_id_name', '=', 'Normal Order')]}"
+                >Service Period</span>
                 <div name="service_period" string="Service Period">
-                    <field name="default_start_date" class="oe_inline" nolabel="1" /> to
-                    <field name="default_end_date" class="oe_inline" nolabel="1" />
+                    <field
+                        name="default_start_date"
+                        class="oe_inline"
+                        nolabel="1"
+                        attrs="{'invisible': [('sale_order_type_id_name', '=', 'Normal Order')]}"
+                    />
+                    <span
+                        attrs="{'invisible': [('sale_order_type_id_name', '=', 'Normal Order')]}"
+                    > to</span>
+                    <field
+                        name="default_end_date"
+                        class="oe_inline"
+                        nolabel="1"
+                        attrs="{'invisible': [('sale_order_type_id_name', '=', 'Normal Order')]}"
+                    />
                 </div>
             </field>
             <field name="number_of_days" position="attributes">
@@ -57,7 +73,10 @@
             ref="sale_stock.view_order_form_inherit_sale_stock"
         />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='product_packaging_id']" position="attributes">
+                <xpath
+                expr="//field[@name='product_packaging_id']"
+                position="attributes"
+            >
                     <attribute name="attrs">{'invisible': 1}</attribute>
                 </xpath>
             </field>
@@ -108,12 +127,14 @@
 
             <!-- Sheet -->
             <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="sale_order_type_id_name" invisible="1" />
                 <field
                     name="type_id"
                     string="Order Type"
                     required="1"
                     widget="radio"
                     options="{'horizontal': true}"
+                    invisible="1"
                 />
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
@@ -240,7 +261,10 @@
                 <field name="name" nolabel="1" colspan="2" />
             </xpath>
 
-            <xpath expr="//field[@name='order_line']/form//field[@name='analytic_tag_ids']" position="after">
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='analytic_tag_ids']"
+                position="after"
+            >
                 <!-- Group: Rental Settings -->
                 <group id="rental_settings" string="Rental Settings" colspan="4">
                     <field name="rental" />
