@@ -36,6 +36,7 @@
             <field name="default_start_date" position="replace" />
             <field name="default_end_date" position="replace" />
             <field name="validity_date" position="after">
+                <field name="sale_order_type_id_name" invisible="1" />
                 <span
                     class="o_form_label font-weight-bold"
                     attrs="{'invisible': [('sale_order_type_id_name', '=', 'Normal Order')]}"
