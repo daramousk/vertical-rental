@@ -215,7 +215,7 @@
             <xpath expr="//div[field[@name='product_uom_qty']]" position="attributes">
                 <attribute
                     name="attrs"
-                >{'invisible': [('rental', '=', True)]}</attribute>
+                    >{'invisible': [('rental', '=', True)]}</attribute>
             </xpath>
             <xpath expr="//field[@name='product_uom']" position="attributes">
                 <attribute name="options">{'no_create': True}</attribute>
@@ -309,6 +309,7 @@
                                          'uom_qty_change':True,
                                          'company_id': parent.company_id}"
                             class="oe_inline"
+                            digits="[10,2]"
                         />
                         <span>&amp;nbsp;</span>
                         <field
