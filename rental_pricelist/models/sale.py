@@ -140,14 +140,6 @@ class SaleOrderLine(models.Model):
                 self.sell_rental_id = False
                 if not self.rental_type:
                     self.rental_type = "new_rental"
-                elif (
-                    self.rental_type == "new_rental"
-                    and self.rental_qty
-                    and self.order_id.warehouse_id
-                ):
-                    avail = self._check_rental_availability()
-                    if avail.get("warning", False):
-                        res["warning"] = avail["warning"]
             elif self.product_id.rental_service_ids:
                 self.rental_type = False
                 self.rental_qty = 0

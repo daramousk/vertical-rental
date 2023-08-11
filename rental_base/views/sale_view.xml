@@ -215,7 +215,7 @@
             <xpath expr="//div[field[@name='product_uom_qty']]" position="attributes">
                 <attribute
                     name="attrs"
-                    >{'invisible': [('rental', '=', True)]}</attribute>
+                >{'invisible': [('rental', '=', True)]}</attribute>
             </xpath>
             <xpath expr="//field[@name='product_uom']" position="attributes">
                 <attribute name="options">{'no_create': True}</attribute>
@@ -298,7 +298,11 @@
                     attrs="{'invisible': [('rental', '=', False)]}"
                 >
                     <field name="number_of_days" />
-                    <label for="product_uom_qty" string="Ordered Rental Time" />
+                    <label
+                        for="product_uom_qty"
+                        string="Ordered Rental Time"
+                        invisible="1"
+                    />
                     <div>
                         <field
                             name="product_uom_qty"
@@ -310,6 +314,7 @@
                                          'company_id': parent.company_id}"
                             class="oe_inline"
                             digits="[10,2]"
+                            invisible="1"
                         />
                         <span>&amp;nbsp;</span>
                         <field
@@ -318,6 +323,7 @@
                             groups="uom.group_uom"
                             class="oe_inline oe_no_button"
                             attrs="{'readonly': 1}"
+                            invisible="1"
                         />
                     </div>
                     <label
