@@ -16,6 +16,7 @@
         "sale_start_end_dates",
         "sale_stock",
         "sales_team",
+        "default_settings",
     ],
     "data": [
         "security/ir.model.access.csv",
