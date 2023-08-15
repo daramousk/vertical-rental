@@ -300,8 +300,9 @@
                     string="Rental Times"
                     colspan="4"
                     attrs="{'invisible': [('rental', '=', False)]}"
+                    invisible="1"
                 >
-                    <field name="number_of_days" />
+                    <field name="number_of_days" invisible="1"/>
                     <label
                         for="product_uom_qty"
                         string="Ordered Rental Time"
